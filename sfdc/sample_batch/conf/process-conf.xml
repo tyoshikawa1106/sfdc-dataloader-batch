@@ -1,0 +1,19 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <!-- Account Insert Batch -->
+    <bean id="processAccountInsert" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
+      <description>Account Object Insert Batch</description>
+        <property name="name" value="processAccountInsert"/>
+        <property name="configOverrideMap">
+            <map>
+                <entry key="sfdc.entity" value="Account"/>
+                <entry key="process.operation" value="insert"/>
+                <entry key="process.mappingFile" value="c:\sfdc\sample_batch\sdl\sdlAccount.sdl"/>
+                <entry key="process.outputError" value="c:\sfdc\sample_batch\log\account_insert_error.csv"/>
+                <entry key="process.outputSuccess" value="c:\sfdc\sample_batch\log\account_insert_success.csv"/>
+                <entry key="dataAccess.type" value="csvRead"/>
+                <entry key="dataAccess.name" value="c:\sfdc\sample_batch\data\accounts.csv"/>
+            </map>
+        </property>
+    </bean>
+</beans>
